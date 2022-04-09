@@ -1,10 +1,9 @@
 /*
 ©️ Johan le stickman - 2022
 https://github.com/johan-perso/cachednavigation
+v1.1
 
 Notes additionnelles :
-	- Seul le contenu du body est remplacé (y compris les attributs du body, telle que les classes)
-	- Les balises situés dans le head (title, meta, ...) ne sont pas modifiés lors d'un changement de page
 	- Les liens externes (en dehors du domaine principal) ne sont pas affectés
 	- Seul les liens avec balise "a" sont affectés, la fonction `changePage(url)` peut également être utilisé
 */
@@ -23,14 +22,23 @@ async function changePage(url){
 
 	// Récupérer la page du cache
 	var page = pageCached.find(p => p.href == url);
-	page = page?.page;
+	body = page?.body;
 
 	// Afficher la page
-	document.body.outerHTML = page;
-	window.scrollTo(0, 0)
+		// Remplacer le body
+		document.body.outerHTML = body;
+
+		// Remplacer le head si il est différent de l'ancien
+		if(page?.head != document?.head?.outerHTML) document.head.outerHTML = page?.head;
+
+		// Scroll vers le 0, 0
+		window.scrollTo(0, 0)
+
+		// Enlever les head vide
+		Array.from(document.querySelectorAll('head')).filter(h => h.childNodes.length == 0).forEach(h => h.remove());
 
 	// Si la page n'est pas du HTML
-	if(!page.startsWith('<body')) return window.location.href = url;
+	if(!body.startsWith('<body')) return window.location.href = url;
 
 	// Modifier l'URL
 	history.pushState({}, '', url);
@@ -56,12 +64,14 @@ async function prefetch(url){
 	// Fetch la page et ne prendre que l'intérieure de la balise body
 	var response = await fetch(url);
 	var page = await response.text();
-	if(page.startsWith('<!DOCTYPE html>')) page = DOMParser.parseFromString(page, 'text/html').body.outerHTML;
+	if(page.startsWith('<!DOCTYPE html>')) body = DOMParser.parseFromString(page, 'text/html').body.outerHTML;
+	if(page.startsWith('<!DOCTYPE html>')) head = DOMParser.parseFromString(page, 'text/html').head.outerHTML;
 
 	// Ajouter la page dans le cache
 	pageCached.push({
 		href: url,
-		page: page
+		body: body,
+		head: head
 	});
 
 	return true;
