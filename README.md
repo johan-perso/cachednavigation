@@ -8,7 +8,7 @@ Précharge les liens présents sur votre site, afin de changer de page instantan
 
 ### Exemple
 
-Demo : https://cachednavigation.johanstickman.com/1.html
+Demo : https://cachednavigation.johanstickman.com/demo/1.html
 
 ### Utilisation (HTML)
 
@@ -40,6 +40,8 @@ changePage('/faq')
 Au chargement de la page, toutes les balises `<a>` sont automatiquement analysés et préchargés. Cette analyse s'applique également en temps réel sur les nouvelles balises ajoutés dynamiquement.
 
 Lors d'un changement de page, si celle-ci n'a pas pu être préchargé, le changement sera fait par le navigateur.
+
+Le changement de page par le cache remplace le contenu du body par celui qui est dans le cache, ce qui fait que le reste de la page (`<head>`, `<html>`, ...) ne changeront pas.
 
 
 ## Licence
