@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="background-color: #0d1117;">
+<head>
+	<!-- Quelques trucs -->
+	<title>CachedNavigation</title>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+	<!-- Meta tag pour les réseaux -->
+	<meta property="og:title" content="CachedNavigation">
+	<meta property="og:description" content="Précharge les liens sur votre page, afin de changer de page instantanément.">
+
+	<!-- CSS -->
+	<link href="https://firebasestorage.googleapis.com/v0/b/storage-bf183.appspot.com/o/otherContent%2Fgh-markdown.css?alt=media" rel="stylesheet">
+	<style>
+		body {
+			box-sizing: border-box;
+			min-width: 200px;
+			max-width: 980px;
+			margin: 0 auto;
+			padding: 45px;
+		}
+		::-webkit-scrollbar {
+			width: 8px;
+			height: 8px;
+			cursor: pointer;
+		}
+		::-webkit-scrollbar-thumb {
+			cursor: pointer;
+			background-color: #30353a;
+		}
+	</style>
+</head>
+<body>
+<article class="markdown-body">
+<h1><a id="user-content-cachednavigationjs" class="anchor" href="#cachednavigationjs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CachedNavigation.js</h1>
+<p><em>inspiré de <a href="https://nextjs.org/learn/basics/navigate-between-pages/client-side" rel="nofollow">NextJS - Client Side Navigation</a></em></p>
+<p>Précharge les liens présents sur votre site, afin de changer de page instantanément.</p>
+<p><g-emoji class="g-emoji" alias="warning" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png">⚠️</g-emoji> Ne fonctionne pas sur les liens externes à votre domaine.</p>
+<h3>
+<a id="user-content-exemple" class="anchor" href="#exemple" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exemple</h3>
+<p>Demo : <a href="https://cachednavigation.johanstickman.com/demo/1.html" rel="nofollow">https://cachednavigation.johanstickman.com/demo/1.html</a></p>
+<h3>
+<a id="user-content-utilisation-html" class="anchor" href="#utilisation-html" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Utilisation (HTML)</h3>
+<p>C'est simple, rajouter une ligne dans votre balise <code>&lt;head&gt;</code> pour importer la librarie :</p>
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-kos">&lt;</span><span class="pl-ent">script</span> <span class="pl-c1">src</span>="<span class="pl-s">https://cdn.jsdelivr.net/gh/johan-perso/cachednavigation@1.0.0/index.js</span>"<span class="pl-kos">&gt;</span><span class="pl-kos">&lt;/</span><span class="pl-ent">script</span><span class="pl-kos">&gt;</span></pre></div>
+<p>Et sur votre page, utiliser la balise <code>&lt;a&gt;</code> :</p>
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-kos">&lt;</span><span class="pl-ent">a</span> <span class="pl-c1">href</span>="<span class="pl-s">/</span>"<span class="pl-kos">&gt;</span>Accueil<span class="pl-kos">&lt;/</span><span class="pl-ent">a</span><span class="pl-kos">&gt;</span></pre></div>
+<h3>
+<a id="user-content-utilisation-javascript" class="anchor" href="#utilisation-javascript" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Utilisation (JavaScript)</h3>
+<p><em>pensez à importer la librairie dans votre balise <code>&lt;head&gt;</code></em></p>
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Précharger la page</span>
+<span class="pl-en">prefetch</span><span class="pl-kos">(</span><span class="pl-s">'/faq'</span><span class="pl-kos">)</span>
+
+<span class="pl-c">// Naviguer vers la page</span>
+<span class="pl-en">changePage</span><span class="pl-kos">(</span><span class="pl-s">'/faq'</span><span class="pl-kos">)</span></pre></div>
+<h3>
+<a id="user-content-notes-additionnelles" class="anchor" href="#notes-additionnelles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notes additionnelles</h3>
+<p>Au chargement de la page, toutes les balises <code>&lt;a&gt;</code> sont automatiquement analysés et préchargés. Cette analyse s'applique également en temps réel sur les nouvelles balises ajoutés dynamiquement.</p>
+<p>Lors d'un changement de page, si celle-ci n'a pas pu être préchargé, le changement sera fait par le navigateur.</p>
+<p>Le changement de page par le cache remplace le contenu du body par celui qui est dans le cache, ce qui fait que le reste de la page (<code>&lt;head&gt;</code>, <code>&lt;html&gt;</code>, ...) ne changeront pas.</p>
+<h2>
+<a id="user-content-licence" class="anchor" href="#licence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Licence</h2>   
+<p>MIT © <a href="https://johanstickman.com" rel="nofollow">Johan</a></p>
+</article>
+</body>
+</html>
