@@ -8,13 +8,13 @@ Précharge les liens présents sur votre site, afin de changer de page instantan
 
 ### Exemple
 
-Demo : https://cachednavigation.johanstickman.com/demo/1.html
+Demo : https://cachednavigation.johanstickman.com/1.html
 
 ### Utilisation (HTML)
 
 C'est simple, rajouter une ligne dans votre balise `<head>` pour importer la librarie :
 ```html
-<script src="https://cdn.jsdelivr.net/gh/johan-perso/cachednavigation@1.1.0/index.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/johan-perso/cachednavigation@1.1.1/index.js"></script>
 ```
 
 Et sur votre page, utiliser la balise `<a>` :
