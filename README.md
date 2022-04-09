@@ -8,7 +8,7 @@ Précharge les liens présents sur votre site, afin de changer de page instantan
 
 ### Exemple
 
-Demo : https://cachednavigation.johanstickman.com/demo/1.html
+Demo : https://cachednavigation.johanstickman.com/1.html
 
 ### Utilisation (HTML)
 
