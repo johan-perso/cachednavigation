@@ -29,7 +29,7 @@ async function changePage(url){
 		document.body.outerHTML = body;
 
 		// Remplacer le head si il est différent de l'ancien
-		if(page?.head != document?.head?.outerHTML) document.head.outerHTML = page?.head;
+		if(page?.head?.replace(/\s/g, '') != document?.head?.innerHTML?.replace(/\s/g, '')) document.head.innerHTML = page?.head;
 
 		// Scroll vers le 0, 0
 		window.scrollTo(0, 0)
@@ -65,7 +65,7 @@ async function prefetch(url){
 	var response = await fetch(url);
 	var page = await response.text();
 	if(page.startsWith('<!DOCTYPE html>')) body = DOMParser.parseFromString(page, 'text/html').body.outerHTML;
-	if(page.startsWith('<!DOCTYPE html>')) head = DOMParser.parseFromString(page, 'text/html').head.outerHTML;
+	if(page.startsWith('<!DOCTYPE html>')) head = DOMParser.parseFromString(page, 'text/html').head.innerHTML;
 
 	// Ajouter la page dans le cache
 	pageCached.push({
