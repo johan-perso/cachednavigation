@@ -8,7 +8,7 @@ Précharge les liens présents sur votre site, afin de changer de page instantan
 
 ### Exemple
 
-Demo : https://cachednavigation.johanstick.me/1.html
+Demo : https://cachednavigation.johanstick.fr/1.html
 
 ### Utilisation (HTML)
 
@@ -46,4 +46,4 @@ Le changement de page par le cache remplace le contenu du body par celui qui est
 
 ## Licence
 
-MIT © [Johan](https://johanstick.me)
+MIT © [Johan](https://johanstick.fr)
